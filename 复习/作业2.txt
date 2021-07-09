@@ -1,0 +1,115 @@
+第二题
+1、select T#,ADDR
+	from T
+	where T# not in(
+		select T#
+		from C
+		where CNAME='数据库系统'
+	);
+	
+	
+2、select TNAME
+	from T,C
+	where T.T#=C.T# and C.C#='C1' and T# in(
+		select T#
+		from T,C#
+		where T.T#=C.C# and C.C#='C4'
+	);
+	
+	SELECT TNAME
+	FROM T
+	WHERE T# IN (
+		SELECT T#
+		FROM C A,C B
+		WHERE A.C#='C1' AND B.C#='C4'
+	);
+	
+3、SELECT T#,TNAME,ADDR
+	FROM T
+	WHERE T# IN(
+		SELECT T#
+		FROM C
+		GROUP BY(T#)
+		HAVING(COUNT(DISTINCT C#)>=2)
+	);
+	
+4、SELECT SEX,COUNT(*)
+	FROM S
+	WHERE AGE >20
+	GROUP BY(SEX);
+	
+5、SELECT S#,SNAME,AGE
+	FROM S
+	WHERE SEX='WOMAN' AND AGE >ALL(
+		SELECT AGE
+		FROM S
+		WHERE SEX='MAM'
+	);
+
+6、SELECT S#,SNAME
+	FROM S
+	WHERE SEX='MAN' AND S# IN(
+		SELECT S#
+		FROM SC
+		GROUP BY(S#)
+		HAVING COUNT(*)=2
+	);
+
+7、SELECT C#
+	FROM C
+	WHERE C# NOT IN(
+		SELECT C#
+		FROM S,SC
+		WHERE S.S#=SC.S# AND SNAME='LIU'
+	);
+
+8、SELECT S#,SUM(GRADE)
+	FROM SC
+	GROUP BY(S#)
+	ORDER BY SUM(GRADE) DESC,S# ASC;
+	
+9、INSERT
+	INTO SS(SS#,SNAME,SEX)
+	SELECT S.S#,S.SNAME,S.SEX
+	FROM S,SC
+	WHERE SC.S#=S.S# AND GRADE >=90 AND GRADE <=100
+
+10、UPDATE SC
+	SET GRADE=0
+	WHERE GRADE < 60 AND C# IN (
+		SELECT C#
+		FROM C,T
+		WHERE TNAME='GAO' AND C.T#=T.T# AND CNAME='数据库系统'
+	);
+	
+11、DELETE 
+	FROM S,SC
+	WHERE S.S#=SC.S# AND SNAME='LIU';
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

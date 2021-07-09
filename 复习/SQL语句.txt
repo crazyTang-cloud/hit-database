@@ -1,0 +1,106 @@
+数据定义 CREATE DROP ALERT
+数据操作 UPDATE DELETE SELECT INSERT
+数据权限 GRAND
+
+建立数据表：
+	CREATE TABLE TABLENAME{
+		<属性> <属性类型> [NOT NULL],
+		.
+		.
+		.
+		完整性约束，...
+	}
+	
+	例子：
+		create table R{
+			id integer not null,
+			name varchar(30),
+			age integer,
+			sex boolean,
+			primary key(id)
+		}
+		或
+		create table R{
+			id integer not null primary key,
+			name varchar(30),
+			age integer,
+			sex boolean
+		}
+	当关系R有多个属性做主键，只能采用第一种primary key(id1,id2)
+	
+删除数据表：
+	drop table tablename
+	
+更新数据表
+	alert table tablename ?????????
+
+建立新视图：
+	create view viewname
+	as select子查询
+
+删除视图：
+	drop view viewname [cascade]
+	
+建立索引：
+	create index indexname
+		from tablename/viewname
+		where indexname=tablename/viewname.value
+
+删除索引：
+	drop index indexname
+	
+插入数据：
+	insert 
+	 into tablename
+	 values (或子查询)
+	
+删除数据：
+	delete
+		from tablename
+		where condition
+
+更新数据：
+	update tablename
+	set 
+	 where condition
+
+查询数据:
+	select *{或tablename中属性的投影，也可以加as改属性名}
+	from tablename
+	where condition
+	group by
+	having
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
